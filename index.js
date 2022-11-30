@@ -7,8 +7,14 @@ const accessField = document.getElementById("accessKey");
       const accessKey = document.getElementById('accessKey').value;
       const fallbackKey = accessKey ? accessKey :"6695bd379ac131eb534c785d94436be9";
       const location = document.getElementById('locate').value;
-      const url = `https://api.weatherstack.com/current?access_key=${fallbackKey}&query=${location}`;
-    const response = await fetch(url);
+      const url = `http://api.weatherstack.com/current?access_key=${fallbackKey}&query=${location}`;
+    const response = await fetch(url,{
+      
+        method: 'GET',
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+    });
   const data = await response.json();
   if(data.error){
     displayContainer.innerHTML=`
