@@ -15,7 +15,7 @@ const accessField = document.getElementById("accessKey");
     console.log("data",data);
     displayContainer.innerHTML=`
     <h1 class="card-title ">Weather Data</h1>
-    <div class="container" >
+    <div class="container p-0" >
       <div class="row  p-2">
         <div class="col d-flex ">
           <h6 class="card-subtitle my-2 text-muted">Location :</h6>
