@@ -1,19 +1,19 @@
 const displayContainer = document.getElementById("weatherData");
 const locField = document.getElementById("locate");
 const accessField = document.getElementById("accessKey");
-  
-  const fetchData = async (e) => {
-    e.preventDefault();
-      const accessKey = document.getElementById('accessKey').value;
-      const fallbackKey = accessKey ? accessKey :"WQGBZXUWWNHEU887XUKWXGWE7";
-      const location = document.getElementById('locate').value;
-      const url =  `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&include=current&key=${fallbackKey}&contentType=json`;
-      let response = "";
-  try{
+
+const fetchData = async (e) => {
+  e.preventDefault();
+  const accessKey = document.getElementById("accessKey").value;
+  const fallbackKey = accessKey ? accessKey : "WQGBZXUWWNHEU887XUKWXGWE7";
+  const location = document.getElementById("locate").value;
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&include=current&key=${fallbackKey}&contentType=json`;
+  let response = "";
+  try {
     response = await fetch(url);
     const data = await response.json();
-    console.log("data",data);
-    displayContainer.innerHTML=`
+    console.log("data", data);
+    displayContainer.innerHTML = `
     <h1 class="card-title ">Weather Data</h1>
     <div class="container p-0" >
       <div class="row  p-2">
@@ -77,19 +77,17 @@ const accessField = document.getElementById("accessKey");
         </div>
       </div>
     </div>
-    `
-
-  }catch(err){
-    if(!response.ok){
-      displayContainer.innerHTML=`
+    `;
+  } catch (err) {
+    if (!response.ok) {
+      displayContainer.innerHTML = `
       <div class="container ">
       <h4 class="card-title  text-danger">No Result Found</h4>
       <span class="text-warning">${err}</span>
       </div>
       `;
-      console.log("data",data);
+      console.log("data", data);
       return false;
     }
   }
-
-  };
+};
